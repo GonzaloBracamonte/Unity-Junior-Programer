@@ -10,14 +10,12 @@ public class PlayerController : MonoBehaviour
     public bool hasPowerup;
     private float powerupStrength = 15.0f;
     public GameObject powerupIndicator;
-    // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         focalPoint = GameObject.Find("Focal Point");
     }
 
-    // Update is called once per frame
     void Update()
     {
         float fowardInput = Input.GetAxis("Vertical");
@@ -49,7 +47,6 @@ public class PlayerController : MonoBehaviour
             Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
             Vector3 awayFromPlayer = collision.gameObject.transform.position - transform.position;
             enemyRigidbody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
-            Debug.Log("Choco con: " + collision.gameObject.name + " con powerup cambiado a " + hasPowerup);
         }
     }
 }
